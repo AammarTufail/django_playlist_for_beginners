@@ -1,4 +1,10 @@
-# Django tools_codanics project
+# Django Playlist for Beginners in Urdu
+
+This repository is part of the following playlist on DJANGO for Beginners in Urdu.
+
+[![Django for Beginners in Urdu](https://img.youtube.com/vi/KA8GLE8YPGs/0.jpg)](https://www.youtube.com/watch?v=KA8GLE8YPGs&list=PL9XvIvvVL50GrR46L_U_eKQHab-BKsvDm&ab_channel=Codanics)
+
+
 
 ## 1. Installation
 
