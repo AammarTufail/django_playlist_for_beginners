@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+</head>
+<body>
+    <div class="container">
+    <h1>Welcome to Codanics by Dr. Muhammad A. Tufail!</h1>
+    <h2> Available Courses</h2>
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Course Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Difficulty Level</th>
+        <th scope="col">Instructor</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for course in courses %}
+        <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td><a href="{% url 'course_detail' course.pk %}">{{ course.title }}</a></td>
+        <td>{{ course.description }}</td>
+        <td>{{ course.difficulty_level }}</td>
+        <td>{{ course.instructor }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      </table>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# add all .venv folders and files
+.venv/
+*/.venv/
+
+/db.sqlite3

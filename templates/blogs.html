@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Codanics Blogs{% endblock %}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        .blog-title {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .blog-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .blog-excerpt {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        .read-more {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .read-more:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Codanics Blogs</h1>
+        <p>by Dr. Muhammad A. Tufail</p>
+    </header>
+
+    <div class="container">
+        {% if blogs %}
+            <div class="blog-grid">
+                {% for blog in blogs %}
+                <article class="blog-card">
+                    <h2 class="blog-title">{{ blog.title }}</h2>
+                    <div class="blog-meta">
+                        <span>Published: {{ blog.created_at|date:"F d, Y" }}</span>
+                        {% if blog.author %}
+                        <span> | By: {{ blog.author }}</span>
+                        {% endif %}
+                    </div>
+                    <p class="blog-excerpt">{{ blog.excerpt|truncatewords:30 }}</p>
+                    <a href="{% url 'blog_detail' blog.id %}" class="read-more">Read More →</a>
+                </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div style="text-align: center; padding: 3rem;">
+                <h2>No blogs available yet.</h2>
+                <p>Check back soon for new content!</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
